@@ -1,0 +1,23 @@
+{
+  "name": "vialer-js-module-queues",
+  "version": "3.0.0",
+  "description": "Vialer-js Queues module for the VoIPGRID platform.",
+  "main": "src/js/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vialer/vialer-js-module-queues.git"
+  },
+  "keywords": [
+    "softphone",
+    "vialer-js"
+  ],
+  "author": "Windshaft B.V.",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vialer/vialer-js-module-queues/issues"
+  },
+  "homepage": "https://github.com/vialer/vialer-js-module-queues#readme"
+}
