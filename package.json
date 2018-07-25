@@ -1,7 +1,7 @@
 {
   "name": "vjs-mod-queues-vg",
   "version": "3.0.0",
-  "description": "Vialer-js custom module for Queues on the VoIPGRID platform.",
+  "description": "Vialer-js custom Queues module for the VoIPGRID API.",
   "main": "src/js/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
