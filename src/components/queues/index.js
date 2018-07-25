@@ -24,6 +24,7 @@ module.exports = (app) => {
         render: templates.vialer_js_module_queues_queues.r,
         staticRenderFns: templates.vialer_js_module_queues_queues.s,
         store: {
+            calls: 'calls.calls',
             queues: 'queues.queues',
             selected: 'queues.selected',
             status: 'queues.status',

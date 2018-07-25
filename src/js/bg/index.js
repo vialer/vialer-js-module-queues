@@ -18,7 +18,7 @@ class ModuleQueues extends Module {
     constructor(app) {
         super(app)
 
-        this.app.timer.registerTimer('bg:queues:size', () => {this._platformData(false)})
+        this.app.timer.registerTimer('bg:queues:size', () => {this._platformData(false, false)})
         this.app.on('bg:queues:selected', ({queue}) => {
             if (queue) {
                 this.app.setState({queues: {selected: {id: queue.id, size: queue.queue_size}}}, {persist: true})
@@ -77,31 +77,43 @@ class ModuleQueues extends Module {
     * VoIPGRID platform.
     * @param {Boolean} empty - Whether to empty the queues list and set the state to `loading`.
     */
-    async _platformData(empty = true) {
-        // API retrieval possibility check is already performed at
-        // the application level, but is also required here because
-        // of the repeated timer function.
-        if (!this.app.state.user.authenticated || !this.app.state.app.online) return
-        if (empty) this.app.setState({queues: {queues: [], status: 'loading'}})
+    _platformData(empty = true, verbose = true) {
+        return new Promise(async(resolve, reject) => {
+            let res
+            // API retrieval possibility check is already performed at
+            // the application level, but is also required here because
+            // of the repeated timer function.
+            if (!this.app.state.user.authenticated || !this.app.state.app.online) return
+            if (empty) {
+                this.app.setState({queues: {queues: [], status: 'loading'}})
+            }
 
-        const res = await this.app.api.client.get('api/queuecallgroup/')
-        if (this.app.api.NOTOK_STATUS.includes(res.status)) {
-            this.app.logger.warn(`${this}platform data request failed (${res.status})`)
-            return
-        }
+            try {
+                res = await this.app.api.client.get('api/queuecallgroup/')
+            } catch (err) {
+                reject(err)
+            }
 
-        let queues = res.data.objects
+            if (this.app.api.NOTOK_STATUS.includes(res.status)) {
+                this.app.logger.warn(`${this}<platform> data request failed (${res.status})`)
+                return
+            }
 
-        for (const queue of queues) {
-            // The queue size from the API is a string.
-            queue.queue_size = parseInt(queue.queue_size, 10)
-            // Queue size is not available.
-            if (isNaN(queue.queue_size)) queue.queue_size = '?'
-        }
+            let queues = res.data.objects
 
-        this.app.setState({queues: {queues: queues, status: null}}, {persist: true})
-        this.app.modules.ui.menubarState()
-        this.setQueueSizesTimer()
+            for (const queue of queues) {
+                // The queue size from the API is a string.
+                queue.queue_size = parseInt(queue.queue_size, 10)
+                // Queue size is not available.
+                if (isNaN(queue.queue_size)) queue.queue_size = '?'
+            }
+
+            this.app.setState({queues: {queues: queues, status: null}}, {persist: true})
+            this.app.modules.ui.menubarState()
+            this.setQueueSizesTimer()
+            if (verbose) this.app.logger.info(`${this}<platform> ${queues.length} queue callgroups loaded`)
+            resolve()
+        })
     }
 
 
@@ -139,7 +151,7 @@ class ModuleQueues extends Module {
                     if (this.app.state.ui.visible) timeout = 5000
                 }
             }
-            this.app.logger.debug(`${this}set queue timer to ${timeout} ms`)
+
             return timeout
         }, true)
 
