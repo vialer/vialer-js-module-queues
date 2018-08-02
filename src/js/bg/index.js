@@ -91,7 +91,7 @@ class ModuleQueues extends Module {
             try {
                 res = await this.app.api.client.get('api/queuecallgroup/')
             } catch (err) {
-                reject(err)
+                return reject(err)
             }
 
             if (this.app.api.NOTOK_STATUS.includes(res.status)) {
@@ -164,7 +164,7 @@ class ModuleQueues extends Module {
     * @returns {String} - An identifier for this module.
     */
     toString() {
-        return `${this.app}[queues] `
+        return `${this.app}[queues-vg] `
     }
 }
 
