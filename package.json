@@ -1,23 +1,26 @@
 {
-  "name": "vjs-mod-queues-vg",
-  "version": "3.0.0",
-  "description": "Vialer-js Queues custom module for the VoIPGRID API.",
-  "main": "src/js/index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/vialer/vjs-mod-queues-vg.git"
-  },
-  "keywords": [
-    "softphone",
-    "vialer-js"
-  ],
-  "author": "Windshaft B.V.",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/vialer/vjs-mod-queues-vg/issues"
-  },
-  "homepage": "https://github.com/vialer/vjs-mod-queues-vg#readme"
+    "name": "vjs-mod-queues-vg",
+    "version": "3.0.0",
+    "description": "Vialer-js Queues custom module for the VoIPGRID API.",
+    "main": "src/js/index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/vialer/vjs-mod-queues-vg.git"
+    },
+    "keywords": [
+        "softphone",
+        "vialer-js"
+    ],
+    "peerDependencies": {
+        "vialer-js": "4.x"
+    },
+    "author": "Windshaft B.V.",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/vialer/vjs-mod-queues-vg/issues"
+    },
+    "homepage": "https://github.com/vialer/vjs-mod-queues-vg#readme"
 }

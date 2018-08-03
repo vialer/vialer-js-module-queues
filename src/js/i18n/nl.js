@@ -5,4 +5,5 @@ module.exports = {
     'callgroups': 'belgroepen',
     'queue': 'wachtrij',
     'queues': 'wachtrijen',
+    'to add the {source} to a {target}': 'om de {source} toe te voegen aan een {target}',
 }
