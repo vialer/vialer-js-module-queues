@@ -14,9 +14,6 @@
         "softphone",
         "vialer-js"
     ],
-    "peerDependencies": {
-        "vialer-js": "4.x"
-    },
     "author": "Windshaft B.V.",
     "license": "MIT",
     "bugs": {

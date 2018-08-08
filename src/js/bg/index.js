@@ -4,7 +4,7 @@
 * and how many callers are in the queue.
 * @module ModuleQueues
 */
-const Module = require('vialer-js/src/js/bg/lib/module')
+const Module = require('vialer-js/bg/lib/module')
 
 
 /**
