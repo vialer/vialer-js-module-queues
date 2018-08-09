@@ -4,12 +4,12 @@
 * and how many callers are in the queue.
 * @module ModuleQueues
 */
-const Module = require('vialer-js/bg/lib/module')
+const Module = require('vialer-js/lib/module')
 
 
 /**
 * Main entrypoint for Queues.
-* @memberof AppBackground.modules
+* @memberof AppBackground.plugins
 */
 class ModuleQueues extends Module {
     /**
@@ -25,7 +25,7 @@ class ModuleQueues extends Module {
             } else {
                 this.app.setState({queues: {selected: {id: null, size: null}}}, {persist: true})
             }
-            this.app.modules.ui.menubarState()
+            this.app.plugins.ui.menubarState()
             this.setQueueSizesTimer()
         })
     }
@@ -109,7 +109,7 @@ class ModuleQueues extends Module {
             }
 
             this.app.setState({queues: {queues: queues, status: null}}, {persist: true})
-            this.app.modules.ui.menubarState()
+            this.app.plugins.ui.menubarState()
             this.setQueueSizesTimer()
             if (verbose) this.app.logger.info(`${this}<platform> ${queues.length} queue callgroups loaded`)
             resolve()
