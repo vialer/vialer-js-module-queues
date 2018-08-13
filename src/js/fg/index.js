@@ -1,10 +1,10 @@
-const Module = require('vialer-js/lib/module')
+const Plugin = require('vialer-js/lib/plugin')
 
 /**
 * Main entrypoint for Queues.
 * @memberof AppForeground.plugins
 */
-class ModuleQueues extends Module {
+class PluginQueues extends Plugin {
     constructor(app) {
         super(app)
 
@@ -14,4 +14,4 @@ class ModuleQueues extends Module {
     }
 }
 
-module.exports = ModuleQueues
+module.exports = PluginQueues

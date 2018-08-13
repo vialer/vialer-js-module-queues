@@ -4,14 +4,14 @@
 * and how many callers are in the queue.
 * @module ModuleQueues
 */
-const Module = require('vialer-js/lib/module')
+const Plugin = require('vialer-js/lib/plugin')
 
 
 /**
 * Main entrypoint for Queues.
 * @memberof AppBackground.plugins
 */
-class ModuleQueues extends Module {
+class PluginQueues extends Plugin {
     /**
     * @param {AppBackground} app - The background application.
     */
@@ -168,4 +168,4 @@ class ModuleQueues extends Module {
     }
 }
 
-module.exports = ModuleQueues
+module.exports = PluginQueues
