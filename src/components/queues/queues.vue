@@ -27,11 +27,11 @@
                 <button class="item-option green" v-show="transferStatus === 'select'" :disabled="!isTransferTarget(null, queue.internal_number)" v-on:click.once="createCall(queue.internal_number)">
                     <icon name="transfer"/>
                 </button>
-                <button class="item-option green" v-show="!transferStatus" :disabled="callingDisabled || !callsReady" v-on:click="createCall(queue.internal_number)">
-                    <icon name="phone-circle"/>
-                </button>
                 <button class="item-option grey" :class="{active: selected.id === queue.id}" v-on:click="toggleActiveQueue(queue)">
                     <icon name="eye"/>
+                </button>
+                <button class="item-option green" v-show="!transferStatus" :disabled="callingDisabled || !callsReady" v-on:click="createCall(queue.internal_number)">
+                    <icon name="phone-circle"/>
                 </button>
             </div>
         </div>
