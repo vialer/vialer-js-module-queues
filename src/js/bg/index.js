@@ -18,6 +18,8 @@ class PluginQueues extends Plugin {
     constructor(app) {
         super(app)
 
+        require('../lib/helpers')(this.app)
+
         this.app.timer.registerTimer('bg:queues:size', () => {this._platformData(false, false)})
         this.app.on('bg:queues:selected', ({queue}) => {
             if (queue) {

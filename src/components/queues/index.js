@@ -13,17 +13,6 @@ module.exports = (app) => {
                 else if (queue.queue_size > 10) classes.hectic = true
                 return classes
             },
-            openPlatformUrl: function(path = '') {
-                app.emit('bg:user:update-token', {
-                    callback: ({token}) => {
-                        path = `client/${this.user.client_id}/${path}`
-                        path = `user/autologin/?token=${token}&username=${this.user.username}&next=/${path}`
-                        let url = `${app.state.settings.platform.url}/${path}`
-                        if (app.env.isExtension) browser.tabs.create({url: url})
-                        window.open(url, '_blank')
-                    },
-                })
-            },
             toggleActiveQueue: function(queue) {
                 if (app.state.queues.selected.id !== queue.id) {
                     app.emit('bg:queues:selected', {queue: queue})

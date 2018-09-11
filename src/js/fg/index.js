@@ -8,6 +8,8 @@ class PluginQueues extends Plugin {
     constructor(app) {
         super(app)
 
+        require('../lib/helpers')(this.app)
+
         this.app.components.Queues = require('../../components/queues')
         this.menubarIcon = 'queues'
         this.menubarTransferHint = true
