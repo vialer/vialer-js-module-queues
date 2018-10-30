@@ -1,2 +1,2 @@
-# vialer-js-module-queues
-Vialer-js queues module for the VoIPGRID platform.
+# vjs-mod-queues
+Vialer-js Queues module for the VoIPGRID platform.

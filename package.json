@@ -1,5 +1,5 @@
 {
-    "name": "vjs-mod-queues-vg",
+    "name": "@vialer/vjs-mod-queues-vg",
     "version": "3.0.0",
     "description": "Vialer-js Queues custom module for the VoIPGRID API.",
     "main": "src/js/index.js",
